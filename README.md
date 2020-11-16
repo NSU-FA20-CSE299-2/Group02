@@ -1,4 +1,4 @@
-![image](Proposal\images\NSU.png)\
+![image](Proposal/images/NSU.png)\
 **Department of Electrical & Computer Engineering**
 
 ***North South University***
