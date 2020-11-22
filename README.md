@@ -1,6 +1,5 @@
 ![image](Documentation/Proposal/images/NSU.png)\
-**Department of Electrical & Computer Engineering**
-
+**Department of Electrical & Computer Engineering**\
 ***North South University***
 
 Farsad’s Store
