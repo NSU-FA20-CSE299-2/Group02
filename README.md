@@ -1,23 +1,35 @@
-![image](Documentation/Proposal/images/NSU.png)\
-**Department of Electrical & Computer Engineering**\
-***North South University***
+<p align="center"><img src="Documentation/Proposal/images/NSU.png"></p>
+<h2 align="center">Department of Electrical & Computer Engineering</h2>
+<h1 align="center">North South University</h1>
 
-Farsad’s Store
+<h3 align="center">Farsad’s Store </h3>
 
-Section 2\
-Fall 2020
+<p align="center">Section 2 <br>
+Fall 2020</p>
 
-Supervised by\
-Shaikh Shawon Arefin Shimon (SAS3)
+<p align="center">Supervised by <br>
+Shaikh Shawon Arefin Shimon (SAS3)</p>
 
-**Team Members (Group 02)**
+<h2 align="center">Team Members (Group 02)</h2>
 
------------------------------------------------------------------
-| Name | ID | Email |
-| ----- | ------| --------|
-| Ilmiat Farhana | 1712428042 | ilmia.farhana@northsouth.edu |
-| Sakib Sadman Shajib | 1731201042 | sakib.shajib173@northsouth.edu |
------------------------------------------------------------------
+<table align="center">
+    <tr>
+        <th>Name</th>
+        <th>ID</th>
+        <th>Email</th>
+    </tr>
+    <tr>
+        <td>Ilmiat Farhana</td>
+        <td>1712428042</td>
+        <td>ilmia.farhana@northsouth.edu</td>
+    </tr>
+    <tr>
+        <td>Sakib Sadman Shajib</td>
+        <td>1731201042</td>
+        <td>sakib.shajib173@northsouth.edu</td>
+    </tr>
+</table>
+
 
 Introduction
 ============
