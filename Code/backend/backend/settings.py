@@ -34,6 +34,7 @@ ALLOWED_HOSTS = ['*']
 INSTALLED_APPS = [
     # My Apps
     'ecommerce',
+    'account',
     # REST framework
     'rest_framework',
     'rest_framework.authtoken',
@@ -130,6 +131,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTH_USER_MODEL = 'account.User'
 
 # REST API
 REST_FRAMEWORK = {
