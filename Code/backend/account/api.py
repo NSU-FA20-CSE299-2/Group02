@@ -43,6 +43,19 @@ class UserCreateViewSet(generics.CreateAPIView):
         permissions.AllowAny
     ]
 
+class UserInfoViewSet(viewsets.ModelViewSet):
+    permission_classes = [
+        permissions.IsAuthenticated
+    ]
+    authentication_classes = [
+        authentication.TokenAuthentication
+    ]
+    serializer_class = UserInfoSerializer
+
+    def get_queryset(self):
+        queryset = User.objects.filter(username=self.request.user)
+        return queryset
+
 class AddressViewSet(viewsets.ModelViewSet):
     queryset = Address.objects.all()
     permission_classes = [
