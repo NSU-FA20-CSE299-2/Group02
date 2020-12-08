@@ -11,5 +11,6 @@ urlpatterns = [
 
 router = routers.DefaultRouter()
 router.register('address', AddressViewSet, 'address')
+router.register('', UserInfoViewSet, '')
 
 urlpatterns += router.urls
