@@ -11,6 +11,9 @@ function App() {
     <div className="grid-container">
       <header className="header">
         <div className="brand">
+          <button onclick="openMenu()">
+            &#9776;
+          </button>
           <a href="index.html">Farsad's Store</a>
         </div>
         <div className="header-links">
@@ -18,6 +21,21 @@ function App() {
           <a href="signin.html">Sign in</a>
         </div>
       </header>
+      <aside class="sidebar">
+        <h3>Products Catagories</h3>
+        <button class="sidebar-close-button" onclick="closeMenu()">X</button>
+       <ul>
+        <li>
+          <a href="index.html">SSD</a>
+        </li>
+        <li>
+          <a href="index.html">Ram</a>
+        </li>
+      </ul>
+
+      </aside>
+
+
       <main className="main">
         <div className="content">
           <Route path="/products/:id" component={ProductScreen} />
@@ -26,6 +44,7 @@ function App() {
       </div>
     </main>
   </div> 
+  
   </BrowserRouter>
   );
 }
