@@ -1,5 +1,5 @@
 import React from 'react';
-import data from './data'
+// import data from './data'
 import {BrowserRouter, Route} from 'react-router-dom'
 import './App.css';
 import HomeScreen from './HomeScreen';
