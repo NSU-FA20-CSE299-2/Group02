@@ -2,6 +2,7 @@ export default {
     products: [
 
         {
+            _id:'1',
             name: 'SSD 120gb',
             image: '/images/Sandisk.jpg',
             price: 15,
@@ -9,6 +10,7 @@ export default {
             rating: 2.5,
         },
         {
+            _id:'2',
             name: 'SSD 120gb',
             image: '/images/ssd.jpg',
             price: 17,
@@ -16,6 +18,7 @@ export default {
             rating: 4.5,
         },
         {
+            _id:'3',
             name: 'SSD 120gb',
             image: '/images/HP.jpg',
             price: 36,
@@ -23,6 +26,7 @@ export default {
             rating: 2.5,
         },
         {
+            _id:'4',
             name: 'SSD 500gb',
             image: '/images/Transcend.jpg',
             price: 20,
