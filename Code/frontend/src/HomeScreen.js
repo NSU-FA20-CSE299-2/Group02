@@ -7,7 +7,10 @@ function HomeScreen(props) {
       data.products.map(product =>
         <li>
           <div className="product">
-            <img className="image" src={product.image} alt="SSD" />
+            <Link to={'/product' + product._id}>          
+             <img className="image" src={product.image} alt="SSD" />
+
+             </Link> 
             <div className="product-name">
               <Link to={'/product/' + product._id}>{product.name}</Link> </div>
             <div className="brand"> {product.brand}</div>
