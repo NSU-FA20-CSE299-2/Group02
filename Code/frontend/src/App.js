@@ -1,6 +1,6 @@
 import React from 'react';
 // import data from './data'
-import {BrowserRouter, Route} from 'react-router-dom'
+import {BrowserRouter, Route, Link } from 'react-router-dom'
 import './App.css';
 import HomeScreen from './HomeScreen';
 import ProductScreen from './ProductScreen';
@@ -14,6 +14,7 @@ function App() {
           <button onclick="openMenu()">
             &#9776;
           </button>
+          <Link to="/" >Farsad's Store</Link>
           <a href="index.html">Farsad's Store</a>
         </div>
         <div className="header-links">

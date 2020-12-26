@@ -10,7 +10,7 @@ export default {
         },
         {
             name: 'SSD 120gb',
-            image: '/images/.ssd.jpg',
+            image: '/images/ssd.jpg',
             price: 17,
             brand: 'WD',
             rating: 4.5,
