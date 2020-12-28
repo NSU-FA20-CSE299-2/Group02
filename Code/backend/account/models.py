@@ -18,6 +18,11 @@ class User(AbstractUser):
     def __str__(self):
         return self.username
 
+ADDRESS_CHOICES = (
+    ('B', 'Billing'),
+    ('S', 'Shipping'),
+)
+
 class Address(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     apt = models.CharField(max_length=64)
@@ -25,6 +30,14 @@ class Address(models.Model):
     street_opt = models.CharField(max_length=128, blank=True)
     city = models.CharField(max_length=64)
     state = models.CharField(max_length=64)
+    address_type = models.CharField(max_length=1, choices=ADDRESS_CHOICES)
+    zip_code = models.CharField(max_length=20)
     mobile = models.CharField(max_length=16)
     lat = models.DecimalField(max_digits=9, decimal_places=6, blank=True)
     lon = models.DecimalField(max_digits=9, decimal_places=6, blank=True)
+
+    def __str__(self):
+        return f"{self.street}, {self.street_opt}, {self.city}, {self.zip_code}"
+
+    class Meta:
+        verbose_name_plural = 'Addresses'
