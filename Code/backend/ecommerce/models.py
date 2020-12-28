@@ -1,6 +1,9 @@
 from django.db import models
 from account.models import User, Address
 import uuid
+from django.db.models.signals import pre_save
+from django.shortcuts import reverse
+from django.utils.text import slugify
 
 class Category(models.Model):
     name = models.CharField(max_length=100)
@@ -119,3 +122,10 @@ class Payment(models.Model):
     @property
     def reference_number(self):
         return f"PAYMENT-{self.order}-{self.id}"
+
+def pre_save_item_receiver(sender, instance, *args, **kwargs):
+    if not instance.slug:
+        instance.slug = slugify(instance.title)
+
+
+pre_save.connect(pre_save_item_receiver, sender=Item)
