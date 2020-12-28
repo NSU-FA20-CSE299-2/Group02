@@ -1,6 +1,9 @@
 from django.db import models
 from account.models import User, Address
 import uuid
+from django.db.models.signals import pre_save
+from django.shortcuts import reverse
+from django.utils.text import slugify
 
 class Category(models.Model):
     name = models.CharField(max_length=100)
@@ -16,13 +19,32 @@ class Category(models.Model):
 class Item(models.Model):
     id = models.UUIDField(primary_key = True, default = uuid.uuid4, editable = False)
     name = models.CharField(max_length=128)
-    price = models.FloatField()
-    discount_price = models.FloatField()
+    price = models.FloatField(default=0)
+    primary_category = models.ForeignKey(Category, related_name='primary_products', blank=True, null=True, on_delete=models.CASCADE)
+    secondary_categories = models.ManyToManyField(Category, blank=True)
     slug = models.SlugField(max_length=100)
+    image = models.ImageField(upload_to='product_images')
     description = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     active = models.BooleanField(default=False)
+    stock = models.IntegerField(default=0)
+
+    def get_absolute_url(self):
+        return reverse("cart:product-detail", kwargs={'slug': self.slug})
+
+    def get_update_url(self):
+        return reverse("staff:product-update", kwargs={'pk': self.pk})
+
+    def get_delete_url(self):
+        return reverse("staff:product-delete", kwargs={'pk': self.pk})
+
+    def get_price(self):
+        return "{:.2f}".format(self.price / 100)
+
+    @property
+    def in_stock(self):
+        return self.stock > 0
 
     def __str__(self):
         return self.name
@@ -35,6 +57,13 @@ class OrderItem(models.Model):
 
     def __str__(self):
         return f"{self.quantity} x {self.product.name}"
+
+    def get_raw_total_item_price(self):
+        return self.quantity * self.product.price
+
+    def get_total_item_price(self):
+        price = self.get_raw_total_item_price()  # 1000
+        return "{:.2f}".format(price / 100)
 
 
 class Order(models.Model):
@@ -56,6 +85,24 @@ class Order(models.Model):
     def reference_number(self):
         return f"ORDER-{self.id}"
 
+    def get_raw_subtotal(self):
+        total = 0
+        for order_item in self.items.all():
+            total += order_item.get_raw_total_item_price()
+        return total
+
+    def get_subtotal(self):
+        subtotal = self.get_raw_subtotal()
+        return "{:.2f}".format(subtotal / 100)
+
+    def get_raw_total(self):
+        subtotal = self.get_raw_subtotal()
+        # total = subtotal - discounts + tax + delivery
+        return subtotal
+
+    def get_total(self):
+        total = self.get_raw_total()
+        return "{:.2f}".format(total / 100)
 
 class Payment(models.Model):
     id = models.UUIDField(primary_key = True, default = uuid.uuid4, editable = False)
@@ -75,3 +122,10 @@ class Payment(models.Model):
     @property
     def reference_number(self):
         return f"PAYMENT-{self.order}-{self.id}"
+
+def pre_save_item_receiver(sender, instance, *args, **kwargs):
+    if not instance.slug:
+        instance.slug = slugify(instance.title)
+
+
+pre_save.connect(pre_save_item_receiver, sender=Item)
