@@ -4,5 +4,5 @@ import App from './App';
 
 it('renders welcome message', () => {
   render(<App />);
-  expect(screen.getByText('Farsad\'s Store')).toBeInTheDocument();
+  expect(screen.findAllByText('Farsad\'s Store'));
 });
