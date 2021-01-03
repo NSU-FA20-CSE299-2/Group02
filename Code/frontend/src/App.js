@@ -1,19 +1,20 @@
 import React from 'react';
-import data from './data';
 import {BrowserRouter, Route, Link} from 'react-router-dom'
 import './App.css';
 import HomeScreen from './HomeScreen';
 import ProductScreen from './ProductScreen';
 
-function openMenu(){
-  console.log('Open Menu');
-}
-
-function closeMenu(){
-  console.log('Close Menu');
-}
-
 function App() {
+
+  const openMenu = () => {
+  document.querySelector(".sidebar").classList.add("open");
+
+}
+
+const closeMenu = () => {
+ document.querySelector(".sidebar").classList.remove("open")
+}
+
   return (
 <BrowserRouter>
     <div className="grid-container">
@@ -32,7 +33,7 @@ function App() {
       </header>
       <aside className="sidebar">
         <h3>Products Catagories</h3>
-        <button className="sidebar-close-button" onClick={closeMenu}>X</button>
+        <button className="sidebar-close-button" onclick={closeMenu}>X</button>
        <ul>
         <li>
           <a href="index.html">SSD</a>
@@ -48,14 +49,12 @@ function App() {
       <main className="main">
         <div className="content">
           <Route path="/products/:id" component={ProductScreen} />
-          <Route path="/" exact={true} component={HomeScreen}/>
+          <Route path="/" exact={true} component={HomeScreen} />
          
       </div>
     </main>
   </div> 
-  
   </BrowserRouter>
   );
-}
-
+  }
 export default App;
