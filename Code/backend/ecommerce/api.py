@@ -1,7 +1,6 @@
 from ecommerce.models import *
-from rest_framework import viewsets, permissions
+from rest_framework import viewsets, permissions, authentication
 from .serializer import *
-from rest_framework.authentication import TokenAuthentication
 
 class CategoryViewSet(viewsets.ModelViewSet):
 
