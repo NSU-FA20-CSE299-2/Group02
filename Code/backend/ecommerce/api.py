@@ -34,7 +34,7 @@ class ItemViewSet(viewsets.ModelViewSet):
         queryset = Item.objects.all()
         return queryset
 
-class OderItemViewSet(viewsets.ModelViewSet):
+class OrderItemViewSet(viewsets.ModelViewSet):
 
     permission_classes = [
         permissions.IsAuthenticated
