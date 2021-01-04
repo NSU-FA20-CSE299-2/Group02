@@ -2,7 +2,6 @@ from django.db import models
 from account.models import User, Address
 import uuid
 from django.db.models.signals import pre_save
-from django.shortcuts import reverse
 from django.utils.text import slugify
 
 class Category(models.Model):
@@ -30,15 +29,6 @@ class Item(models.Model):
     active = models.BooleanField(default=False)
     stock = models.IntegerField(default=0)
 
-    def get_absolute_url(self):
-        return reverse("cart:product-detail", kwargs={'slug': self.slug})
-
-    def get_update_url(self):
-        return reverse("staff:product-update", kwargs={'pk': self.pk})
-
-    def get_delete_url(self):
-        return reverse("staff:product-delete", kwargs={'pk': self.pk})
-
     def get_price(self):
         return "{:.2f}".format(self.price / 100)
 
@@ -62,7 +52,7 @@ class OrderItem(models.Model):
         return self.quantity * self.product.price
 
     def get_total_item_price(self):
-        price = self.get_raw_total_item_price()  # 1000
+        price = self.get_raw_total_item_price()
         return "{:.2f}".format(price / 100)
 
 
@@ -109,7 +99,8 @@ class Payment(models.Model):
     order = models.ForeignKey(
         Order, on_delete=models.CASCADE, related_name='payments')
     payment_method = models.CharField(max_length=20, choices=(
-        ('PayPal', 'PayPal'),
+        ('Online', 'Online'),
+        ('Cash', 'Cash')
     ))
     timestamp = models.DateTimeField(auto_now_add=True)
     successful = models.BooleanField(default=False)
