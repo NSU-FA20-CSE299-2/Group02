@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     # My Apps
     'ecommerce',
     'account',
+    'accounting',
     # REST framework
     'rest_framework',
     'rest_framework.authtoken',
