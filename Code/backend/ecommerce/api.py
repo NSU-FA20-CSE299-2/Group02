@@ -12,11 +12,10 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.status import HTTP_200_OK, HTTP_400_BAD_REQUEST
-from .serializers import (
-    ItemSerializer, OrderSerializer, ItemDetailSerializer, AddressSerializer,
-    PaymentSerializer
+from .serializer import (
+    ItemSerializer, OrderSerializer, ItemDetailSerializer, PaymentSerializer
 )
-from ecommerce.models import Item, OrderItem, Order, Address, Payment, Coupon, Refund, UserProfile, Variation, ItemVariation
+from ecommerce.models import Item, OrderItem, Order, Payment, Coupon, Refund, Variation, ItemVariation
 
 
 class UserIDView(APIView):
