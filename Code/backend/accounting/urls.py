@@ -6,6 +6,6 @@ urlpatterns = []
 
 router = routers.DefaultRouter()
 
-router.register('', TransactionViewSet, 'category')
+router.register('', TransactionViewSet, '')
 
 urlpatterns += router.urls
