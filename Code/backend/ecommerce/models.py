@@ -69,6 +69,25 @@ class OrderItem(models.Model):
         return self.get_total_item_price()
 
 
+class Payment(models.Model):
+    id = models.UUIDField(primary_key = True, default = uuid.uuid4, editable = False)
+    user = models.ForeignKey(User,
+                             on_delete=models.SET_NULL, blank=True, null=True)
+    amount = models.FloatField()
+    timestamp = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.user.username
+
+
+class Coupon(models.Model):
+    code = models.CharField(max_length=15)
+    amount = models.FloatField()
+
+    def __str__(self):
+        return self.code
+
+
 class Order(models.Model):
     user = models.ForeignKey(User,
                              on_delete=models.CASCADE)
@@ -100,26 +119,7 @@ class Order(models.Model):
         if self.coupon:
             total -= self.coupon.amount
         return total
-
-
-class Payment(models.Model):
-    id = models.UUIDField(primary_key = True, default = uuid.uuid4, editable = False)
-    user = models.ForeignKey(User,
-                             on_delete=models.SET_NULL, blank=True, null=True)
-    amount = models.FloatField()
-    timestamp = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return self.user.username
-
-
-class Coupon(models.Model):
-    code = models.CharField(max_length=15)
-    amount = models.FloatField()
-
-    def __str__(self):
-        return self.code
-
+        
 
 class Refund(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE)

@@ -182,23 +182,6 @@ class ItemDetailSerializer(serializers.ModelSerializer):
         return VariationSerializer(obj.variation_set.all(), many=True).data
 
 
-class AddressSerializer(serializers.ModelSerializer):
-    country = CountryField()
-
-    class Meta:
-        model = Address
-        fields = (
-            'id',
-            'user',
-            'street_address',
-            'apartment_address',
-            'country',
-            'zip',
-            'address_type',
-            'default'
-        )
-
-
 class PaymentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Payment
