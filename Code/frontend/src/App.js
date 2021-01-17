@@ -36,10 +36,25 @@ const closeMenu = () => {
         <button className="sidebar-close-button" onclick={closeMenu}>X</button>
        <ul>
         <li>
-          <a href="index.html">SSD</a>
+          <a href="index.html">Notebook</a>
         </li>
         <li>
-          <a href="index.html">Ram</a>
+          <a href="index.html">Desktop and Pc</a>
+        </li>
+        <li>
+          <a href="index.html">Security System</a>
+        </li>
+        <li>
+          <a href="index.html">Gaming</a>
+        </li>
+        <li>
+          <a href="index.html">Network</a>
+        </li>
+        <li>
+          <a href="index.html">Storage</a>
+        </li>
+        <li>
+          <a href="index.html">Sound System</a>
         </li>
       </ul>
 
