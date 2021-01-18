@@ -79,7 +79,7 @@ class OrderSerializer(serializers.ModelSerializer):
         model = Order
         fields = (
             'id',
-            'order_items',
+            'items',
             'total',
             'coupon'
         )

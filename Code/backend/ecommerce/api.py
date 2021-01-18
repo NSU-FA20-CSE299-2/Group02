@@ -20,7 +20,7 @@ from ecommerce.models import Item, OrderItem, Order, Payment, Coupon, Refund, Va
 
 class UserIDView(APIView):
     def get(self, request, *args, **kwargs):
-        return Response({'userID': request.user.id}, status=HTTP_200_OK)
+        return Response({'userID': request.user.username}, status=HTTP_200_OK)
 
 
 class ItemListView(ListAPIView):

@@ -108,16 +108,16 @@ class Order(models.Model):
     received = models.BooleanField(default=False)
     refund_requested = models.BooleanField(default=False)
     refund_granted = models.BooleanField(default=False)
+    total = models.FloatField(default=0)
 
     def __str__(self):
         return self.user.username
-
+    
     def get_total(self):
-        total = 0
         for order_item in self.items.all():
-            total += order_item.get_final_price()
+            self.total += order_item.get_final_price()
         if self.coupon:
-            total -= self.coupon.amount
+            self.total -= self.coupon.amount
         return total
         
 
