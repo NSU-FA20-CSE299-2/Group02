@@ -18,6 +18,11 @@ class User(AbstractUser):
     def __str__(self):
         return self.username
 
+ADDRESS_CHOICES = (
+    ('B', 'Billing'),
+    ('S', 'Shipping'),
+)
+
 class Address(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     apt = models.CharField(max_length=64)
