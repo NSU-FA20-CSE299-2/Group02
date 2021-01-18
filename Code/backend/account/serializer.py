@@ -31,5 +31,5 @@ class UserInfoSerializer(serializers.ModelSerializer):
             'first_name',
             'last_name',
             'email',
-            'mobileNo'
+            'mobileNo',
         )
